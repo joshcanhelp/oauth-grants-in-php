@@ -1,11 +1,11 @@
 <?php
 define('META_TITLE', 'Token Exchange - Authorization Code with PKCE');
-require_once '../_bootstrap.php';
-require_once '../_head.php';
+require_once '../_includes/bootstrap.php';
+require_once '../_includes/head.php';
 
 $token_post_body = [
   'grant_type'    => 'authorization_code',
-  'client_id'     => AUTH0_CLIENT_ID,
+  'client_id'     => AUTH0_ACPKCE_CLIENT_ID,
   'code_verifier' => $_SESSION[ SESSION_CODE_VERIFIER_KEY ],
   'code'          => $_GET['code'],
   'redirect_uri'  => url( 'callback' ),
@@ -60,4 +60,4 @@ if ( empty( $_SESSION[ SESSION_AUTH_KEY ] ) ) {
 
 <?php endif; ?>
 
-<?php require_once '../_foot.php' ?>
+<?php require_once '../_includes/foot.php' ?>

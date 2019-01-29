@@ -1,7 +1,7 @@
 <?php
 define('META_TITLE', 'Callback - Authorization Code with PKCE');
-require_once '../_bootstrap.php';
-require_once '../_head.php';
+require_once '../_includes/bootstrap.php';
+require_once '../_includes/head.php';
 ?>
 
 <h1>Step 2</h1>
@@ -36,7 +36,7 @@ require_once '../_head.php';
       <li>
         <code>client_id</code>:
         The same Application identifier as before:
-        <pre><?php echo AUTH0_CLIENT_ID; ?></pre>
+        <pre><?php echo AUTH0_ACPKCE_CLIENT_ID; ?></pre>
       </li>
       <li>
         <code>code_verifier</code>:
@@ -57,4 +57,4 @@ require_once '../_head.php';
     <p><strong><a href="exchange.php?<?php echo http_build_query( $_GET ) ?>">Send the request &rsaquo;</a></strong></p>
   <?php endif; ?>
 <?php endif; ?>
-<?php require_once '../_foot.php' ?>
+<?php require_once '../_includes/foot.php' ?>

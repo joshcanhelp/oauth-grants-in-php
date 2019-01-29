@@ -1,4 +1,15 @@
 <?php
+$credentials_path = '../credentials.php';
+if ( ! file_exists( $credentials_path ) ) {
+  die( 'Missing ' . $credentials_path );
+}
+
+require $credentials_path;
+
+if ( ! defined( 'AUTH0_DOMAIN' ) ) {
+  die( 'Missing AUTH0_DOMAIN constant' );
+}
+
 session_start();
 
 function url( $script = 'index' ) {
@@ -21,7 +32,7 @@ function logout_url() {
   return sprintf(
     'https://%s/v2/logout?client_id=%s&returnTo=%s',
     AUTH0_DOMAIN,
-    AUTH0_CLIENT_ID,
+    AUTH0_ACPKCE_CLIENT_ID,
     url( 'logout' )
   );
 }
@@ -37,10 +48,6 @@ function base64_url_encode($input) {
 define( 'SESSION_AUTH_KEY', 'auth0_session' );
 define( 'SESSION_CODE_VERIFIER_KEY', 'auth0_code_verifier' );
 define( 'SESSION_STATE_KEY', 'auth0_state' );
-
-define( 'AUTH0_DOMAIN', 'joshc-test.auth0.com' );
-define( 'AUTH0_CLIENT_ID', 'TL7J3x94zUFZbVSXCBzXZPBRyP5AbrgZ' );
-define( 'AUTH0_API_AUDIENCE', 'https://pkce-sample-api' );
 
 if ( ! defined( 'META_TITLE' ) ) {
   define('META_TITLE', 'OAuth Grants in PHP');

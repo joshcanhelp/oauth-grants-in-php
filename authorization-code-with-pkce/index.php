@@ -1,11 +1,11 @@
 <?php
 define('META_TITLE', 'Start - Authorization Code with PKCE');
-require_once '../_bootstrap.php';
-require_once '../_head.php';
+require_once '../_includes/bootstrap.php';
+require_once '../_includes/head.php';
 ?>
 
 <h1>Step 1</h1>
-<p>Here's where we check if we're logged in or not!</p>
+<p>Let's see how authentication works using an authorization code grant with PKCE. We're in a web browser now so, technically, it's not necessary to use this grant for authentication. So, we'll just pretend that this is a mobile browser. You can make your browser window smaller if you think that might help 🤷‍♂️</p>
 <p>Let's check what's in our PHP session (<code><?php echo SESSION_AUTH_KEY; ?></code> key):</p>
 
 <?php if ( ! empty( $_SESSION[SESSION_AUTH_KEY] ) ): ?>
@@ -42,10 +42,10 @@ require_once '../_head.php';
 
   // These will be appended to the authorize URL.
   $authorize_url_params = [
-    'audience'              => AUTH0_API_AUDIENCE,
+    'audience'              => AUTH0_ACPKCE_API_AUDIENCE,
     'scope'                 => 'openid email read:messages',
     'response_type'         => 'code',
-    'client_id'             => AUTH0_CLIENT_ID,
+    'client_id'             => AUTH0_ACPKCE_CLIENT_ID,
     'code_challenge'        => $code_challenge,
     'code_challenge_method' => 'S256',
     'redirect_uri'          => url( 'callback' ),
@@ -102,7 +102,8 @@ require_once '../_head.php';
   <p><strong>
     <a href="<?php echo authorize_url( $authorize_url_params ); ?>">Let's log in &rsaquo;</a>
   </strong></p>
+  <p class="subtext">* The click here would be where your mobile device switches context to the system browser or a desktop app loads an embedded browser.</p>
 
 <?php endif; ?>
 
-<?php require_once '../_foot.php' ?>
+<?php require_once '../_includes/foot.php' ?>
