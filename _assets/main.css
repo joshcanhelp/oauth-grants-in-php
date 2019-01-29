@@ -2,6 +2,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
+  margin: 0;
 }
 
 pre {
@@ -47,6 +48,10 @@ blockquote.goodnews {
 section {
   max-width: 800px;
   margin: 2em auto;
+}
+
+ul {
+  padding-left: 1.5em;
 }
 
 p, li {

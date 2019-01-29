@@ -1,11 +1,12 @@
 <?php
 define('META_TITLE', 'Start - Authorization Code with PKCE');
+
 require_once '../_includes/bootstrap.php';
 require_once '../_includes/head.php';
 ?>
 
 <h1>Step 1</h1>
-<p>Let's see how authentication works using an authorization code grant with PKCE. We're in a web browser now so, technically, it's not necessary to use this grant for authentication. So, we'll just pretend that this is a mobile browser. You can make your browser window smaller if you think that might help 🤷‍♂️</p>
+<p>Let's see how authentication works using an authorization code grant with PKCE. This grant is used for public clients running on native applications where we can't store credentials securely. For this case, we'll just pretend like we're in an mobile app!</p>
 <p>Let's check what's in our PHP session (<code><?php echo SESSION_AUTH_KEY; ?></code> key):</p>
 
 <?php if ( ! empty( $_SESSION[SESSION_AUTH_KEY] ) ): ?>

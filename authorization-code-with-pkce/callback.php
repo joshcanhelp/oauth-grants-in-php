@@ -1,5 +1,6 @@
 <?php
 define('META_TITLE', 'Callback - Authorization Code with PKCE');
+
 require_once '../_includes/bootstrap.php';
 require_once '../_includes/head.php';
 ?>
