@@ -45,6 +45,25 @@ function base64_url_encode($input) {
   return $input;
 }
 
+function curl_handle_post_json( $post_body ) {
+  $curl_handle = curl_init();
+
+  curl_setopt( $curl_handle, CURLOPT_FAILONERROR, true );
+  curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, true );
+  curl_setopt( $curl_handle, CURLOPT_CONNECTTIMEOUT, 10 );
+  curl_setopt( $curl_handle, CURLOPT_TIMEOUT, 10 );
+  curl_setopt( $curl_handle, CURLOPT_CUSTOMREQUEST, 'POST' );
+  curl_setopt( $curl_handle, CURLOPT_URL, token_url() );
+  curl_setopt( $curl_handle, CURLOPT_POSTFIELDS, json_encode( (object) $post_body ) );
+  curl_setopt( $curl_handle, CURLOPT_HTTPHEADER, [ 'Content-Type: application/json' ] );
+
+  return $curl_handle;
+}
+
+function censor( $string ) {
+  return str_repeat( '•', strlen( $string ) );
+}
+
 define( 'SESSION_AUTH_KEY', 'auth0_session' );
 define( 'SESSION_CODE_VERIFIER_KEY', 'auth0_code_verifier' );
 define( 'SESSION_STATE_KEY', 'auth0_state' );

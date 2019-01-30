@@ -6,7 +6,8 @@ require_once '../_includes/head.php';
 ?>
 
 <h1>Step 1</h1>
-<p>Let's see how authentication works using an authorization code grant with PKCE. This grant is used for public clients running on native applications where we can't store credentials securely. For this case, we'll just pretend like we're in an mobile app!</p>
+<p>Let's see how authentication works using an authorization code grant with PKCE. This grant is typically used in native apps, not web apps (but we'll pretend). For more information about this grant and how it should be used, please see the <a href="https://github.com/joshcanhelp/oauth-grants-in-php/blob/master/authorization-code-with-pkce/README.md" target="_blank">README here</a></p>
+
 <p>Let's check what's in our PHP session (<code><?php echo SESSION_AUTH_KEY; ?></code> key):</p>
 
 <?php if ( ! empty( $_SESSION[SESSION_AUTH_KEY] ) ): ?>

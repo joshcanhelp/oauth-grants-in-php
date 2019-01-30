@@ -1,15 +1,16 @@
 <?php
-define('META_TITLE', 'Token Exchange - Authorization Code with PKCE');
+define('META_TITLE', 'Exchange - Resource Owner');
 
 require_once '../_includes/bootstrap.php';
 require_once '../_includes/head.php';
 
 $token_post_body = [
-  'grant_type'    => 'authorization_code',
-  'client_id'     => AUTH0_ACPKCE_CLIENT_ID,
-  'code_verifier' => $_SESSION[ SESSION_CODE_VERIFIER_KEY ],
-  'code'          => $_GET['code'],
-  'redirect_uri'  => url( 'callback' ),
+  'grant_type'    => $_POST['grant_type'],
+  'scope'         => $_POST['scope'],
+  'client_id'     => AUTH0_RO_CLIENT_ID,
+  'client_secret' => AUTH0_RO_CLIENT_SECRET,
+  'username'      => $_POST['username'],
+  'password'      => $_POST['password'],
 ];
 
 $error = null;
@@ -21,11 +22,15 @@ if ( empty( $_SESSION[ SESSION_AUTH_KEY ] ) ) {
 }
 ?>
 
-<h1>Step 3</h1>
-<p>Again, this would typically be part of the callback processing but it's separated here to spell out each step.</p>
+<h1>Step 2</h1>
+
 <p>Here's what we sent:</p>
 
-<?php var_dump( $token_post_body ) ?>
+<?php
+$token_post_body['client_secret'] = censor( $token_post_body['client_secret'] );
+$token_post_body['password'] = censor( $token_post_body['password'] );
+var_dump( $token_post_body );
+?>
 
 <?php if ( $error ): ?>
 
