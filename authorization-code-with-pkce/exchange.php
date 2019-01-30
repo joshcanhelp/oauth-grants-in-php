@@ -30,7 +30,7 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
 <?php if ($error) : ?>
   <p>It looks like our call came back with an error:</p>
   <blockquote class="badnews"><?php echo $error; ?></blockquote>
-  <p><strong><a href="index.php">&lsaquo; Let's start over</a></strong></p>
+  <p><a href="/" class="go-link go-link--back">Let's try again</a></strong></p>
 
 <?php else : ?>
   <p>Here's what we got back:</p>
@@ -45,7 +45,7 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
     ?>
 
   <p>The authentication is now complete!</p>
-  <p><strong><a href="/">&lsaquo; Back home</a></strong></p>
+  <p><a href="/" class="go-link go-link--back">Back home</a></strong></p>
 
 <?php endif; ?>
 

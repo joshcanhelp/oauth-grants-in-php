@@ -7,13 +7,14 @@ require_once '../_includes/head.php';
 
 <h1>Step 2</h1>
 <p>Welcome back from the authentication server!</p>
+
 <?php if (isset( $_GET['error'] )) : ?>
   <p>
     Uh oh, looks like something went wrong.
     We've got an <code><?php echo $_GET['error']; ?></code> error that says:
   </p>
   <blockquote><?php echo $_GET['error_description']; ?></blockquote>
-  <p><strong><a href="index.php">&lsaquo; Let's try again</a></strong></p>
+  <p><a href="/" class="go-link go-link--back">Let's try again</a></strong></p>
 
 <?php else : ?>
   <p>If you've gotten this far then you're halfway to logging in.</p>
@@ -30,7 +31,7 @@ require_once '../_includes/head.php';
       Your application should NOT continue to log this user in.
       Check to make sure you're storing the state correctly and prompt the user to start over.
     </p>
-    <p><strong><a href="index.php">&lsaquo; Let's try again</a></strong></p>
+    <p><a href="/" class="go-link go-link--back">Let's try again</a></strong></p>
 
     <?php else : ?>
     <blockquote class="goodnews">State values match</blockquote>
@@ -70,9 +71,13 @@ require_once '../_includes/head.php';
         <pre><?php echo url( 'callback' ); ?></pre>
       </li>
     </ul>
-    <p><strong>
-      <a href="exchange.php?<?php echo http_build_query( $_GET ); ?>">Send the request &rsaquo;</a>
-    </strong></p>
+    <p>
+      <a href="exchange.php?<?php echo http_build_query( $_GET ); ?>"
+        class="go-link go-link--next">Send the request</a>
+    </p>
+
     <?php endif; ?>
+
 <?php endif; ?>
+
 <?php require_once '../_includes/foot.php'; ?>

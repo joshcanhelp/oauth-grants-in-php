@@ -24,13 +24,10 @@ require_once '../_includes/head.php';
     (try pasting this into <a href="https://jwt.io" target="_blank">jwt.io</a>):
   </p>
   <pre><?php echo $_SESSION[SESSION_AUTH_KEY]['id_token']; ?></pre>
-  <p><strong>
-    <a href="<?php echo logoutUrl(); ?>">Log out &rsaquo;</a>
-  </strong></p>
+  <p><a href="<?php echo logoutUrl(); ?>" class="go-link go-link--next">Log out</a></p>
 
 <?php else : ?>
   <blockquote>You <strong>are not</strong> logged in.</blockquote>
-
   <p>To log you in, we will POST the following along with your user credntials below:</p>
 
     <?php
@@ -42,6 +39,7 @@ require_once '../_includes/head.php';
         'client_secret'         => AUTH0_RO_CLIENT_SECRET,
     ];
     ?>
+    
   <ul>
     <li>
       <code>grant_type</code>:
@@ -83,7 +81,7 @@ require_once '../_includes/head.php';
       <label for="password">Password</label>
       <input type="password" name="password" id="password" value="" required>
     </p>
-    <input type="submit" value="Let's log in &rsaquo;">
+    <button type="submit" class="go-link go-link--next">Let's log in</button>
   </form>
   <p class="subtext">* This form should absolutely, positively be served over HTTPS.</p>
 

@@ -23,7 +23,6 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
 ?>
 
 <h1>Step 2</h1>
-
 <p>Here's what we sent:</p>
 
 <?php
@@ -50,7 +49,7 @@ var_dump( $token_post_body );
     ?>
 
   <p>The authentication is now complete!</p>
-  <p><strong><a href="/">&lsaquo; Back home</a></strong></p>
+  <p><a href="/" class="go-link go-link--back">Back home</a></strong></p>
 
 <?php endif; ?>
 

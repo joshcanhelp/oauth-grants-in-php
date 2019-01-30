@@ -13,7 +13,6 @@ require_once '../_includes/head.php';
   href="https://github.com/joshcanhelp/oauth-grants-in-php/blob/master/authorization-code-with-pkce/README.md"
   target="_blank">README here</a>
 </p>
-
 <p>Let's check what's in our PHP session (<code><?php echo SESSION_AUTH_KEY; ?></code> key):</p>
 
 <?php if (! empty( $_SESSION[SESSION_AUTH_KEY] )) : ?>
@@ -25,15 +24,14 @@ require_once '../_includes/head.php';
   <pre><?php echo $_SESSION[SESSION_AUTH_KEY]['id_token']; ?></pre>
   <p>You can now send the access token below to your API (which should validate it as well):</p>
   <pre><?php echo $_SESSION[SESSION_AUTH_KEY]['access_token']; ?></pre>
-  <p><strong>
-    <a href="<?php echo logoutUrl(); ?>">Log out &rsaquo;</a>
-  </strong></p>
+  <p><a href="<?php echo logoutUrl(); ?>" class="go-link go-link--next">Log out</a></strong></p>
 
 <?php else : ?>
   <blockquote>You <strong>are not</strong> logged in.</blockquote>
   <p>OK, set's redirect you to login. We'll send you to your authorization server here:</p>
   <pre><?php echo authorizeUrl(); ?></pre>
   <p>... along with the following URL parameters:</p>
+
     <?php
     // This will be sent with the authorization code to the token endpoint.
     $code_verifier                       = bin2hex( random_bytes( 32 ) );
@@ -61,6 +59,7 @@ require_once '../_includes/head.php';
         'state'                 => $state,
     ];
     ?>
+  
   <ul>
     <li>
       <code>audience</code>:
@@ -117,9 +116,10 @@ require_once '../_includes/head.php';
   <pre><?php echo authorizeUrl( $authorize_url_params ); ?></pre>
   <p>And this is what we have stored in session before we go:</p>
     <?php var_dump( $_SESSION ); ?>
-  <p><strong>
-    <a href="<?php echo authorizeUrl( $authorize_url_params ); ?>">Let's log in &rsaquo;</a>
-  </strong></p>
+  <p>
+    <a href="<?php echo authorizeUrl( $authorize_url_params ); ?>"
+      class="go-link go-link--next">Let's log in</a></strong>
+  </p>
   <p class="subtext">
     * The click here would be where your mobile device switches context to the system browser or a desktop app
     loads an embedded browser.

@@ -67,6 +67,43 @@ blockquote.goodnews {
   background-color: #e9ffd9;
 }
 
+.go-link {
+  font-size: 1em;
+  font-weight: bold;
+  border: 0;
+  padding: 0;
+  color: #0000EE;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.go-link:hover {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  border: 0;
+  padding: 0;
+  color: #0000EE;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.go-link:visited {
+  color: #0000EE;
+}
+
+.go-link--back:before {
+  content: "‹";
+  display: inline-block;
+  margin-right: 0.25em;
+}
+
+.go-link--next:after {
+  content: "›";
+  display: inline-block;
+  margin-left: 0.25em;
+}
+
 /*
 Forms
 */
@@ -94,16 +131,6 @@ input[type="email"] {
   width: 90%;
   max-width: 20em;
   line-height: 1;
-}
-
-input[type="submit"] {
-  font-size: 1em;
-  font-weight: bold;
-  border: 0;
-  padding: 0;
-  color: #0000EE;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 /*
