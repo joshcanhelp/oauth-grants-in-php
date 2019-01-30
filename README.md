@@ -1,4 +1,4 @@
-# OAuth Grant in PHP
+# OAuth Grants in PHP
 
 OAuth grants implemented and explained in PHP.
 
