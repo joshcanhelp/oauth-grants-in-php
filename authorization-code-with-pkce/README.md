@@ -1,6 +1,32 @@
 # PKCE on Desktop + Mobile
 
+## Intro
+
 This example covers an Authorization Code grant with PKCE. This grant is meant to protect public clients, such as native mobile and desktop apps, when switching context to a system browser to fulfill authentication.
+
+### Resources
+
+#### [Auth0 Docs: Mobile Login Flow Concept](https://auth0.com/docs/flows/concepts/mobile-login-flow)
+
+> The PKCE-enhanced Authorization Code Flow introduces a secret created by the calling application that can be verified by the authorization server; this secret is called the Code Verifier.
+
+> The calling app creates a transform value of the Code Verifier called the Code Challenge and sends this value over HTTPS to retrieve an Authorization Code. This way, a malicious attacker can only intercept the Authorization Code, and they cannot exchange it for a token without the Code Verifier.
+
+#### [Auth0 Docs: Auth Code with PKCE Tutorial](https://auth0.com/docs/api-auth/tutorials/authorization-code-grant-pkce)
+
+#### [Auth0 Docs: Authentication API](https://auth0.com/docs/api/authentication#native-mobile-login-flow44)
+
+#### [Auth0 Blog: OAuth 2.0 Best Current Practice for Native Apps](https://auth0.com/blog/oauth-2-best-practices-for-native-apps/)
+
+> Embedded user agents are unsafe for third parties. If used, the app has access to the OAuth authorization grant as well as the user's credentials, leaving this data vulnerable to recording or malicious use.
+> Embedded user agents also don't share authentication state, meaning no single sign-on benefits can be conferred.
+> Browser security is also a major focus of vendors, and they tend to manage security and sessions policies quite well.
+> Cross-Site Request Forgery (CSRF) attacks should also be mitigated by using the state parameter to link client requests and responses.
+> Authorization servers can protect against these fake user agents by requiring an authentication factor only available to genuine external user agents.
+
+#### [IETF: OAuth 2.0 for Native Apps](https://tools.ietf.org/html/rfc8252)
+
+>  This best current practice requires that only external user-agents like the browser are used for OAuth by native apps.  It documents how native apps can implement authorization flows using the browser as the preferred external user-agent ... This practice is also known as the "AppAuth pattern", in reference to open-source libraries [AppAuth] that implement it.
 
 ## How To Run
 
@@ -20,28 +46,7 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 6. Start a PHP server: `php -S localhost:9000`
 7. Open [localhost:9000](http://localhost:9000) in a browser and follow the steps!
 
-## Resources
-
-- [Auth0 Docs: Mobile Login Flow Concept](https://auth0.com/docs/flows/concepts/mobile-login-flow)
-	- The PKCE-enhanced Authorization Code Flow introduces a secret created by the calling application that can be verified by the authorization server; this secret is called the Code Verifier.
-	- The calling app creates a transform value of the Code Verifier called the Code Challenge and sends this value over HTTPS to retrieve an Authorization Code. This way, a malicious attacker can only intercept the Authorization Code, and they cannot exchange it for a token without the Code Verifier.
-- [Auth0 Docs: Auth Code with PKCE Tutorial](https://auth0.com/docs/api-auth/tutorials/authorization-code-grant-pkce)
-	- Code verifier:
-		- `var code_verifier = crypto.randomBytes(32);`
-		- `verifier = base64URLEncode(code_verifier);`
-	- Code challenge:
-		- `var code_challenge = crypto.createHash('sha256').update(code_verifier).digest();`
-		- `code_challenge = base64URLEncode(code_challenge);`
-- [Auth0 Blog: OAuth 2.0 Best Current Practice for Native Apps](https://auth0.com/blog/oauth-2-best-practices-for-native-apps/)
-	- Best Current Practice for OAuth 2.0 for Native Apps Request For Comments: https://www.rfc-editor.org/rfc/rfc8252.txt
-	- "only external user agents (such as the browser) should be used with the OAuth 2.0 Authorization Framework by native applications; this is known as the "AppAuth pattern". Embedded user agents should not be implemented."
-	- Embedded user agents are unsafe for third parties. If used, the app has access to the OAuth authorization grant as well as the user's credentials, leaving this data vulnerable to recording or malicious use.
-	- Embedded user agents also don't share authentication state, meaning no single sign-on benefits can be conferred.
-	- Browser security is also a major focus of vendors, and they tend to manage security and sessions policies quite well.
-	- Cross-Site Request Forgery (CSRF) attacks should also be mitigated by using the state parameter to link client requests and responses.
-	- Authorization servers can protect against these fake user agents by requiring an authentication factor only available to genuine external user agents.
-
-## Intro
+## Additional Notes
 
 - Public clients (vs confidential clients)
 - Application cannot prove its identity, cannot keep app credentials safe
@@ -57,10 +62,9 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 
 - Authentication process needs a browser, but there are two types
 - In-app browsers are sand-boxed, system browsers can use main cookie jar
+	- **TODO:** Look up system browsers for the different platforms
 
-> Look up system browsers for the different platforms
-
-- In-app browsers could have a keylogger, system browers cannot
+- In-app browsers could have a keylogger, system browsers cannot
 - If using an embedded browser, no need for PKCE because no extra leg
 - System browsers shows the URL that you're on (but security theater)
 - The problem now is:
@@ -99,7 +103,7 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 	- code= same as response from AS
 	- code_verifier= takes the place of client_secret
 	- Same as confidential client otherwise
-- Reponse is:
+- Response is:
 	- Verify the code_challenge with the sent code_verifier
 	- Rest is the same as regular AC grant
 - Refresh token is a very sensitive session artifact

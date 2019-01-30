@@ -13,6 +13,7 @@ section::after, section::before {
   opacity: 0.2;
   position: absolute;
   content: "";
+  display: block;
 }
 
 section::before {
@@ -28,9 +29,18 @@ section::after {
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  display: block;
   left: 50%;
   margin-left: -25px;
   border: 1px solid white;
   bottom: -60px;
+}
+
+@media ( max-width: 464px ) {
+  section {
+    border: none;
+  }
+
+  section::after, section::before {
+    display: none;
+  }
 }
