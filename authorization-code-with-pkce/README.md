@@ -1,10 +1,8 @@
 # PKCE on Desktop + Mobile
 
-## Intro
+## Intro/Resources
 
 This example covers an Authorization Code grant with PKCE. This grant is meant to protect public clients, such as native mobile and desktop apps, when switching context to a system browser to fulfill authentication.
-
-### Resources
 
 #### [Auth0 Docs: Mobile Login Flow Concept](https://auth0.com/docs/flows/concepts/mobile-login-flow)
 
@@ -28,7 +26,7 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 
 >  This best current practice requires that only external user-agents like the browser are used for OAuth by native apps.  It documents how native apps can implement authorization flows using the browser as the preferred external user-agent ... This practice is also known as the "AppAuth pattern", in reference to open-source libraries [AppAuth] that implement it.
 
-## How To Run
+## How to Run this Demo
 
 1. Clone the repo
 2. Create a Native Application in the [Auth0 dashboard](https://manage.auth0.com/#/applications)
@@ -46,7 +44,7 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 6. Start a PHP server: `php -S localhost:9000`
 7. Open [localhost:9000](http://localhost:9000) in a browser and follow the steps!
 
-## Additional Notes
+## Additional Notes on this Grant
 
 - Public clients (vs confidential clients)
 - Application cannot prove its identity, cannot keep app credentials safe
@@ -84,7 +82,7 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 - This is a transient secret, one-time use ... kind of like a nonce
 - Challenge is sent to the AS and checked when code is exchanged
 
-## API Call
+## How to Perform this Grant
 
 - Browser flow: first try the resource, then redirected to the AS
 - Native flow: logic is all in the device, no browser, so ask for token first

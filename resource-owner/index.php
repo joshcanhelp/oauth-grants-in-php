@@ -35,11 +35,11 @@ require_once '../_includes/head.php';
     $ro_post_body = [
         'grant_type'            => 'password',
         'scope'                 => 'openid email',
-        'client_id'             => AUTH0_RO_CLIENT_ID,
-        'client_secret'         => AUTH0_RO_CLIENT_SECRET,
+        'client_id'             => AUTH0_ROPG_CLIENT_ID,
+        'client_secret'         => AUTH0_ROPG_CLIENT_SECRET,
     ];
     ?>
-    
+
   <ul>
     <li>
       <code>grant_type</code>:

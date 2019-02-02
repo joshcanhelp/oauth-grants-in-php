@@ -7,8 +7,8 @@ require_once '../_includes/head.php';
 $token_post_body = [
     'grant_type'    => $_POST['grant_type'],
     'scope'         => $_POST['scope'],
-    'client_id'     => AUTH0_RO_CLIENT_ID,
-    'client_secret' => AUTH0_RO_CLIENT_SECRET,
+    'client_id'     => AUTH0_ROPG_CLIENT_ID,
+    'client_secret' => AUTH0_ROPG_CLIENT_SECRET,
     'username'      => $_POST['username'],
     'password'      => $_POST['password'],
 ];
