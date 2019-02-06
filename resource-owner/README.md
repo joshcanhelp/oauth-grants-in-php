@@ -28,24 +28,3 @@ The Resource Owner grant is for applications that are absolutely trusted with th
 5. Navigate to the `resource-owner` folder
 6. Start a PHP server: `php -S localhost:9000`
 7. Open [localhost:9000](http://localhost:9000) in a browser and follow the steps!
-
-## Additional Notes on this Grant
-
-- Was not designed for native clients
-- Customers love it (full control of UX) but robs us of the opportunity to make things better
-- At the mercy of how the application was written
-	- Open to debugger
-	- Saving it incorrectly
-- Harder to do anomaly detection like IP address checking
-- Limited: no consent, no MFA, no federation, no SSO
-- DB only, no social or passwordless
-- Good for testing
-- What is the real problem?
-- Token Endpoint Authentication Method
-- Customer concerns (marketing)
-	- Fear of the unknown
-	- Lack of control over the experience
-	- Performance
-- Vitamins vs painkillers
-- Supported but not recommended
-- Cannot do zero trust/continuous authentication

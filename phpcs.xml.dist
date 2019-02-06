@@ -50,6 +50,7 @@
     <rule ref="Generic.Strings"/>
     <rule ref="Generic.WhiteSpace">
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+        <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect"/>
     </rule>
 
     <!--

@@ -46,41 +46,10 @@ This example covers an Authorization Code grant with PKCE. This grant is meant t
 
 ## Additional Notes on this Grant
 
-- Public clients (vs confidential clients)
-- Application cannot prove its identity, cannot keep app credentials safe
-- Any external process can pretend to be any public client
-- Code is running on a user device
-- Client ID is a hint for configuration, not used for authentication decisions
-	- Useful for UX-type hinting
-	- Cannot guarantee where it comes from or who calls it
 - Redirect URI (https://tools.ietf.org/html/rfc8252#section-7):
 	- **Private-Use URI Scheme Redirection** - Many platforms support inter-app communication via URIs by allowing apps to register private-use URI schemes ("custom URL schemes") like "com.example.app".  When the browser or another app attempts to load a URI with a private-use URI scheme, the app that registered it is launched to handle the request.
 	- **Claimed "https" Scheme URI Redirection** - Some operating systems allow apps to claim "https" scheme URIs in the domains they control (like https://app.example.com/oauth2redirect/example-provider). When the browser encounters a claimed URI, instead of the page being loaded in the browser, the native app is launched with the URI supplied as a launch parameter.
 	- **Loopback Interface Redirection** - Native apps that are able to open a port on the loopback network interface without needing special permissions (typically, those on desktop operating systems) can use the loopback interface to receive the OAuth redirect. Loopback redirect URIs use the "http" scheme and are constructed with the loopback IP literal and whatever port the client is listening on. That is, "http://127.0.0.1:{port}/{path}" for IPv4, and "http://[::1]:{port}/{path}" for IPv6.
-
-- Authentication process needs a browser, but there are two types
-- In-app browsers are sand-boxed, system browsers can use main cookie jar
-	- **TODO:** Look up system browsers for the different platforms
-
-- In-app browsers could have a keylogger, system browsers cannot
-- If using an embedded browser, no need for PKCE because no extra leg
-- System browsers shows the URL that you're on (but security theater)
-- The problem now is:
-	- two different processes, the native app and the browser
-	- extra leg between app and browser communicating the code
-- System browser is for mobile, not desktop
-	- Default might be a different browser
-	- Where will the pop-up appear? In front or behind?
-	- Other tabs might try to interfere (intentionally) or distract (not)
-	- Between-process communication is not as clear-cut
-- Desktop:
-	- Embedded web views (mini-browser)
-- Devices that have no browser display need a different grant, device flow
-- Attack vector is the transfer between, code could be exchanged by anyone
-	- How not as important as possibility
-- So we use PKCE or "Pick-See": Proof Key for Code Exchange
-- This is a transient secret, one-time use ... kind of like a nonce
-- Challenge is sent to the AS and checked when code is exchanged
 
 ## How to Perform this Grant
 

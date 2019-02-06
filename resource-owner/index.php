@@ -28,7 +28,7 @@ require_once '../_includes/head.php';
 
 <?php else : ?>
   <blockquote>You <strong>are not</strong> logged in.</blockquote>
-  <p>To log you in, we will POST the following along with your user credntials below:</p>
+  <p>To log you in, we will POST the following along with your user credentials below:</p>
 
     <?php
     // These will be sent to the token endpoint.
