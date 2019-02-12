@@ -49,18 +49,28 @@ require_once '../_includes/head.php';
 
     // These will be appended to the authorize URL.
     $authorize_url_params = [
-        'audience'              => AUTH0_ACPKCE_API_AUDIENCE,
-        'scope'                 => 'openid email read:messages',
-        'response_type'         => 'code',
         'client_id'             => AUTH0_ACPKCE_CLIENT_ID,
+        'response_type'         => 'code',
+        'audience'              => AUTH0_ACPKCE_API_AUDIENCE,
+        'scope'                 => 'openid profile read:reports offline_access',
+        'redirect_uri'          => url( 'callback' ),
         'code_challenge'        => $code_challenge,
         'code_challenge_method' => 'S256',
-        'redirect_uri'          => url( 'callback' ),
         'state'                 => $state,
     ];
     ?>
-  
+
   <ul>
+	  <li>
+		  <code>client_id</code>:
+		  The Application identifier from Auth0; this has been set to:
+		  <pre><?php echo $authorize_url_params['client_id']; ?></pre>
+	  </li>
+	  <li>
+		  <code>response_type</code>:
+		  For this grant, the value here is always:
+		  <pre><?php echo $authorize_url_params['response_type']; ?></pre>
+	  </li>
     <li>
       <code>audience</code>:
       The unique identifier of the API the native app wants to access; the API audience here is set to:
@@ -73,16 +83,12 @@ require_once '../_includes/head.php';
       scope being used for this example is:
       <pre><?php echo $authorize_url_params['scope']; ?></pre>
     </li>
-    <li>
-      <code>response_type</code>:
-      For this grant, the value here is always:
-      <pre><?php echo $authorize_url_params['response_type']; ?></pre>
-    </li>
-    <li>
-      <code>client_id</code>:
-      The Application identifier from Auth0; this has been set to:
-      <pre><?php echo $authorize_url_params['client_id']; ?></pre>
-    </li>
+	  <li>
+		  <code>redirect_uri</code>:
+		  The URL to which Auth0 will redirect the browser after authorization has been granted by the user;
+		  this has been set to:
+		  <pre><?php echo $authorize_url_params['redirect_uri']; ?></pre>
+	  </li>
     <li>
       <code>code_challenge</code>:
       This is the parameter that tells the authorization server that we're using PKCE along with our authorization
@@ -97,13 +103,6 @@ require_once '../_includes/head.php';
       This is the hashing algorithm used to create the code_challenge above; for an Auth0 server,
       this should always be set to:
       <pre><?php echo $authorize_url_params['code_challenge_method']; ?></pre>
-    </li>
-    <li>
-      <code>redirect_uri</code>:
-      The URL to which Auth0 will redirect the browser after authorization has been granted by the user;
-      this has been set to:
-      <pre><?php echo $authorize_url_params['redirect_uri']; ?></pre>
-    </li>
     </li>
     <li>
       <code>state</code>:

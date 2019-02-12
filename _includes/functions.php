@@ -23,7 +23,7 @@ function authorizeUrl(array $params = [])
 {
     $authorize_url = 'https://'.AUTH0_DOMAIN.'/authorize';
     if (! empty( $params )) {
-        $authorize_url .= '?'.http_build_query( $params );
+        $authorize_url .= '?'.http_build_query( $params, null, '&', PHP_QUERY_RFC3986 );
     }
 
     return $authorize_url;

@@ -5,10 +5,10 @@ require_once '../_includes/bootstrap.php';
 require_once '../_includes/head.php';
 
 $token_post_body = [
-    'grant_type'    => 'authorization_code',
     'client_id'     => AUTH0_ACPKCE_CLIENT_ID,
-    'code_verifier' => $_SESSION[SESSION_CODE_VERIFIER_KEY],
+    'grant_type'    => 'authorization_code',
     'code'          => $_GET['code'],
+    'code_verifier' => $_SESSION[SESSION_CODE_VERIFIER_KEY],
     'redirect_uri'  => url( 'callback' ),
 ];
 

@@ -1,5 +1,5 @@
 section {
-  max-width: 400px;
+  max-width: 600px;
   margin: 2em auto;
   border: 16px solid black;
   padding: 1em;
@@ -35,7 +35,7 @@ section::after {
   bottom: -60px;
 }
 
-@media ( max-width: 464px ) {
+@media ( max-width: 664px ) {
   section {
     border: none;
   }
