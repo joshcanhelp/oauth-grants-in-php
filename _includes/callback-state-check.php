@@ -1,10 +1,12 @@
+<?php
+$state_matches = $_GET['state'] !== $_SESSION['auth0_state'];
+?>
 <p>
   First, we want to check to make sure that the state we've got stored in session
   matches the one we got back from the authorization server.
 </p>
 
-<?php if ($_GET['state'] !== $_SESSION[SESSION_STATE_KEY]) : ?>
-
+<?php if ($state_matches) : ?>
   <blockquote class="badnews">State values do not match</blockquote>
   <p>
     Your application should NOT continue to log this user in.

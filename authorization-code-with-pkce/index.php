@@ -49,18 +49,18 @@ require_once '../_includes/head.php';
       'code_challenge_method' => 'S256',
       'state'                 => $state,
   ];
-  ?>
+    ?>
 
 <ul>
   <li>
-	  <code>client_id</code>:
-	  The Application identifier from Auth0; this has been set to:
-	  <pre><?php echo $authorize_url_params['client_id']; ?></pre>
+      <code>client_id</code>:
+      The Application identifier from Auth0; this has been set to:
+      <pre><?php echo $authorize_url_params['client_id']; ?></pre>
   </li>
   <li>
-	  <code>response_type</code>:
-	  For this grant, the value here is always:
-	  <pre><?php echo $authorize_url_params['response_type']; ?></pre>
+      <code>response_type</code>:
+      For this grant, the value here is always:
+      <pre><?php echo $authorize_url_params['response_type']; ?></pre>
   </li>
   <li>
     <code>audience</code>:
@@ -75,10 +75,10 @@ require_once '../_includes/head.php';
     <pre><?php echo $authorize_url_params['scope']; ?></pre>
   </li>
   <li>
-	  <code>redirect_uri</code>:
-	  The URL to which Auth0 will redirect the browser after authorization has been granted by the user;
-	  this has been set to:
-	  <pre><?php echo $authorize_url_params['redirect_uri']; ?></pre>
+      <code>redirect_uri</code>:
+      The URL to which Auth0 will redirect the browser after authorization has been granted by the user;
+      this has been set to:
+      <pre><?php echo $authorize_url_params['redirect_uri']; ?></pre>
   </li>
   <li>
     <code>code_challenge</code>:

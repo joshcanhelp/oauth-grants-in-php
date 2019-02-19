@@ -15,8 +15,8 @@ function url($script = 'index')
 /**
  * Get the URL to the authorize endpoint.
  *
- * @param array $params Parameters to add to the URL.
- * @param bool  $format Format the URL For output.
+ * @param array   $params Parameters to add to the URL.
+ * @param boolean $format Format the URL For output.
  *
  * @return string
  */

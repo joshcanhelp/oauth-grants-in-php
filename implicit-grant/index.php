@@ -3,12 +3,12 @@ define('META_TITLE', 'Start - Implicit Grant');
 
 require_once '../_includes/bootstrap.php';
 
-$state                       = random_bytes( 32 );
-$state                       = base64UrlEncode( $state );
+$state = random_bytes( 32 );
+$state = base64UrlEncode( $state );
 setcookie( 'auth0_state', $state, SESSION_COOKIE_EXPIRES, '/' );
 
-$nonce                       = random_bytes( 32 );
-$nonce                       = base64UrlEncode( $nonce );
+$nonce = random_bytes( 32 );
+$nonce = base64UrlEncode( $nonce );
 setcookie( 'auth0_nonce', $nonce, SESSION_COOKIE_EXPIRES, '/' );
 
 require_once '../_includes/head.php';
@@ -32,7 +32,6 @@ require_once '../_includes/head.php';
 <p>... along with the following URL parameters:</p>
 
 <?php
-
 // These will be appended to the authorize URL.
 $authorize_url_params = [
     'scope'                 => 'openid email',
@@ -59,7 +58,9 @@ if (defined( 'AUTH0_IMP_API_AUDIENCE' )) {
   </li>
   <li>
     <code>response_type</code>:
-    For this grant, we have a few options here, <code>token</code> for an access token, <code>id_token</code> for an ID token, and <code>token id_token</code> for both. Here, we'll use:
+    For this grant, we have a few options here, <code>token</code> for an access token,
+    <code>id_token</code> for an ID token, and <code>token id_token</code> for both.
+    Here, we'll use:
     <pre><?php echo $authorize_url_params['response_type']; ?></pre>
   </li>
   <li>

@@ -24,7 +24,9 @@
         <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
     </rule>
     <rule ref="Generic.Classes.DuplicateClassName"/>
-    <rule ref="Generic.CodeAnalysis"/>
+    <rule ref="Generic.CodeAnalysis">
+      <exclude name="Generic.CodeAnalysis.UnconditionalIfStatement.Found"/>
+    </rule>
     <rule ref="Generic.Commenting"/>
     <rule ref="Generic.ControlStructures"/>
     <rule ref="Generic.Files.LineLength">

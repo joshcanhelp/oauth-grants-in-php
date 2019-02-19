@@ -35,7 +35,6 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
   <p><a href="/" class="go-link go-link--back">Let's try again</a></strong></p>
 
 <?php else : ?>
-
   <p>Here's what we sent:</p>
 
   <?php var_dump( $token_post_body ); ?>
