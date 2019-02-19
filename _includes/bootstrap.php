@@ -17,6 +17,8 @@ session_start();
 define( 'SESSION_AUTH_KEY', 'auth0_session' );
 define( 'SESSION_CODE_VERIFIER_KEY', 'auth0_code_verifier' );
 define( 'SESSION_STATE_KEY', 'auth0_state' );
+define( 'SESSION_NONCE_KEY', 'auth0_nonce' );
+define( 'SESSION_COOKIE_EXPIRES', time() + 60 );
 
 if (! defined( 'META_TITLE' )) {
     define('META_TITLE', 'OAuth Grants in PHP');

@@ -16,14 +16,21 @@ function url($script = 'index')
  * Get the URL to the authorize endpoint.
  *
  * @param array $params Parameters to add to the URL.
+ * @param bool  $format Format the URL For output.
  *
  * @return string
  */
-function authorizeUrl(array $params = [])
+function authorizeUrl(array $params = [], $format = false)
 {
     $authorize_url = 'https://'.AUTH0_DOMAIN.'/authorize';
     if (! empty( $params )) {
         $authorize_url .= '?'.http_build_query( $params, null, '&', PHP_QUERY_RFC3986 );
+    }
+
+    if ($format) {
+      $authorize_url = str_replace( '&', '<br>&nbsp;&nbsp;&<strong>', $authorize_url );
+      $authorize_url = str_replace( '?', '?<br>&nbsp;&nbsp;<strong>', $authorize_url );
+      $authorize_url = str_replace( '=', '</strong>=', $authorize_url );
     }
 
     return $authorize_url;

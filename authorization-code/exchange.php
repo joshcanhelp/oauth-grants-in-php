@@ -26,10 +26,8 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
 ?>
 
 <h1>Step 3</h1>
-<p>Again, this would typically be part of the callback processing but it's separated here to spell out each step.</p>
-<p>Here's what we sent:</p>
 
-<?php var_dump( $token_post_body ); ?>
+<p>Again, this would typically be part of the callback processing but it's separated here to spell out each step.</p>
 
 <?php if ($error) : ?>
   <p>It looks like our call came back with an error:</p>
@@ -37,6 +35,11 @@ if (empty( $_SESSION[SESSION_AUTH_KEY] )) {
   <p><a href="/" class="go-link go-link--back">Let's try again</a></strong></p>
 
 <?php else : ?>
+
+  <p>Here's what we sent:</p>
+
+  <?php var_dump( $token_post_body ); ?>
+
   <p>Here's what we got back:</p>
 
     <?php
